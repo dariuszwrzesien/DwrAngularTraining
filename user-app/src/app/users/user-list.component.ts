@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './user-list.component.html',
 })
 export class UserListComponent {
-  users = [
+  users: any[] = [
     {
       'id': 1,
       'first_name': 'Giacomo',
