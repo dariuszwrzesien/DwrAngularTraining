@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './user-list.component.html',
 })
 export class UserListComponent {
+  showPhoto = false;
+  listFilter = 'cart';
   users: any[] = [
     {
       'id': 1,
@@ -12,7 +14,9 @@ export class UserListComponent {
       'last_name': 'Larrat',
       'email': 'glarrat0@bing.com',
       'gender': 'Male',
-      'ip_address': '107.77.40.68'
+      'ip_address': '107.77.40.68',
+      'bank_balance': 10485.00,
+      'photo': 'https://picsum.photos/80/80/?323'
     },
     {
       'id': 2,
@@ -20,7 +24,9 @@ export class UserListComponent {
       'last_name': 'Heymes',
       'email': 'sheymes1@toplist.cz',
       'gender': 'Male',
-      'ip_address': '180.136.59.223'
+      'ip_address': '180.136.59.223',
+      'bank_balance': 99.989,
+      'photo': 'https://picsum.photos/80/80/?644'
     },
     {
       'id': 3,
@@ -28,7 +34,9 @@ export class UserListComponent {
       'last_name': 'Paydon',
       'email': 'rpaydon2@ucla.edu',
       'gender': 'Female',
-      'ip_address': '36.8.49.45'
+      'ip_address': '36.8.49.45',
+      'bank_balance': -10.90,
+      'photo': 'https://picsum.photos/80/80/?346'
     },
     {
       'id': 4,
@@ -36,7 +44,13 @@ export class UserListComponent {
       'last_name': 'Hexam',
       'email': 'ghexam3@4shared.com',
       'gender': 'Male',
-      'ip_address': '234.216.233.43'
+      'ip_address': '234.216.233.43',
+      'bank_balance': 5499.878,
+      'photo': 'https://picsum.photos/80/80/?785'
     }
   ];
+
+  togglePhoto(): void {
+    this.showPhoto = !this.showPhoto;
+  }
 }

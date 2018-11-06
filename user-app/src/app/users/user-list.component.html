@@ -1,25 +1,34 @@
 <div class='card'>
   <div class='card-header'>
     User List
+    <div>
+      Filtered by: <input type="text" [(ngModel)]='listFilter'/>
+    </div>
   </div>
   <table class="card-body table" *ngIf='users && users.length'>
     <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">
+        Photo <button (click)='togglePhoto()'>{{showPhoto ? 'Hide' : 'Show'}}</button>
+      </th>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
       <th scope="col">Email</th>
       <th scope="col">Gender</th>
+      <th scope="col">Bank balance</th>
       <th scope="col">IP</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor='let user of users'>
       <td>{{user.id}}</td>
+      <td><img *ngIf='showPhoto' src='{{user.photo}}' title='{{user.first_name}} {{user.last_name}}'></td>
       <td>{{user.first_name}}</td>
       <td>{{user.last_name}}</td>
       <td>{{user.email}}</td>
       <td>ikonka</td>
+      <td>{{user.bank_balance | currency:'EUR':symbol:'1.2-2' }}</td>
       <td>{{user.ip_address}}</td>
     </tr>
     </tbody>
