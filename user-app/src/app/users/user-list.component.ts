@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {IUser} from './user';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
   showPhoto = false;
   listFilter = 'cart';
-  users: any[] = [
+  users: IUser[] = [
     {
       'id': 1,
       'first_name': 'Giacomo',
@@ -52,5 +54,9 @@ export class UserListComponent {
 
   togglePhoto(): void {
     this.showPhoto = !this.showPhoto;
+  }
+
+  ngOnInit(): void {
+    console.log('Przykładowe użycie "Lifecycle Hook" o nazwie OnInit');
   }
 }

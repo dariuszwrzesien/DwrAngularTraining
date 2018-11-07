@@ -2,7 +2,8 @@
   <div class='card-header'>
     User List
     <div>
-      Filtered by: <input type="text" [(ngModel)]='listFilter'/>
+      <p>Filter: <input type="text" [(ngModel)]='listFilter'/></p>
+      <p>Filtered by: {{listFilter}}</p>
     </div>
   </div>
   <table class="card-body table" *ngIf='users && users.length'>
