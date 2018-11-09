@@ -7,11 +7,14 @@ import {IUser} from './user';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  showPhoto = false;
-  listFilter = 'cart';
+
+  _listFilter: string;
+  _showPhoto: boolean;
+  filteredUsers: IUser[];
   users: IUser[] = [
     {
       'id': 1,
+      'guid': 'GL-1A2C',
       'first_name': 'Giacomo',
       'last_name': 'Larrat',
       'email': 'glarrat0@bing.com',
@@ -22,6 +25,7 @@ export class UserListComponent implements OnInit {
     },
     {
       'id': 2,
+      'guid': 'SH-21DC',
       'first_name': 'Shurlocke',
       'last_name': 'Heymes',
       'email': 'sheymes1@toplist.cz',
@@ -32,6 +36,7 @@ export class UserListComponent implements OnInit {
     },
     {
       'id': 3,
+      'guid': 'RP-3A33',
       'first_name': 'Robin',
       'last_name': 'Paydon',
       'email': 'rpaydon2@ucla.edu',
@@ -42,6 +47,7 @@ export class UserListComponent implements OnInit {
     },
     {
       'id': 4,
+      'guid': 'GH-4A24',
       'first_name': 'Gibbie',
       'last_name': 'Hexam',
       'email': 'ghexam3@4shared.com',
@@ -52,8 +58,35 @@ export class UserListComponent implements OnInit {
     }
   ];
 
+  constructor() {
+    this.filteredUsers = this.users;
+    this.listFilter = 'dupa';
+    this._showPhoto = false;
+  }
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredUsers = this.listFilter ? this.performFilter(this.listFilter) : this.users;
+  }
+
+  get showPhoto(): boolean {
+    return this._showPhoto;
+  }
+  set showPhoto(value: boolean) {
+    this._showPhoto = value;
+  }
+
   togglePhoto(): void {
     this.showPhoto = !this.showPhoto;
+  }
+
+  performFilter(filterBy: string): IUser[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.users.filter((user: IUser) => user.first_name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   ngOnInit(): void {

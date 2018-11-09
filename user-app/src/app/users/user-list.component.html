@@ -13,6 +13,7 @@
       <th scope="col">
         Photo <button (click)='togglePhoto()'>{{showPhoto ? 'Hide' : 'Show'}}</button>
       </th>
+      <th scope="col">GUID/Token</th>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
       <th scope="col">Email</th>
@@ -22,9 +23,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor='let user of users'>
+    <tr *ngFor='let user of filteredUsers'>
       <td>{{user.id}}</td>
       <td><img *ngIf='showPhoto' src='{{user.photo}}' title='{{user.first_name}} {{user.last_name}}'></td>
+      <td>{{user.guid | convertToSpaces: '-'}}</td>
       <td>{{user.first_name}}</td>
       <td>{{user.last_name}}</td>
       <td>{{user.email}}</td>
