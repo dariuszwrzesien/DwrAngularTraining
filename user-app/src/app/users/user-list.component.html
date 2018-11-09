@@ -2,6 +2,9 @@
   <div class='card-header'>
     User List
     <div>
+      {{eventMessage}}
+    </div>
+    <div>
       <p>Filter: <input type="text" [(ngModel)]='listFilter'/></p>
       <p>Filtered by: {{listFilter}}</p>
     </div>
@@ -13,12 +16,13 @@
       <th scope="col">
         Photo <button (click)='togglePhoto()'>{{showPhoto ? 'Hide' : 'Show'}}</button>
       </th>
-      <th scope="col">GUID/Token</th>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
+      <th scope="col">Reputation</th>
       <th scope="col">Email</th>
       <th scope="col">Gender</th>
       <th scope="col">Bank balance</th>
+      <th scope="col">GUID/Token</th>
       <th scope="col">IP</th>
     </tr>
     </thead>
@@ -26,12 +30,13 @@
     <tr *ngFor='let user of filteredUsers'>
       <td>{{user.id}}</td>
       <td><img *ngIf='showPhoto' src='{{user.photo}}' title='{{user.first_name}} {{user.last_name}}'></td>
-      <td>{{user.guid | convertToSpaces: '-'}}</td>
       <td>{{user.first_name}}</td>
       <td>{{user.last_name}}</td>
+      <td><app-star [rating]='user.reputation' (ratingClicked)='onRatingClicked($event)'></app-star></td>
       <td>{{user.email}}</td>
       <td>ikonka</td>
       <td>{{user.bank_balance | currency:'EUR':symbol:'1.2-2' }}</td>
+      <td>{{user.guid | convertToSpaces: '-'}}</td>
       <td>{{user.ip_address}}</td>
     </tr>
     </tbody>

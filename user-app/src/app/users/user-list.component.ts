@@ -10,6 +10,7 @@ export class UserListComponent implements OnInit {
 
   _listFilter: string;
   _showPhoto: boolean;
+  eventMessage = '';
   filteredUsers: IUser[];
   users: IUser[] = [
     {
@@ -21,6 +22,7 @@ export class UserListComponent implements OnInit {
       'gender': 'Male',
       'ip_address': '107.77.40.68',
       'bank_balance': 10485.00,
+      'reputation': 3.8,
       'photo': 'https://picsum.photos/80/80/?323'
     },
     {
@@ -32,6 +34,7 @@ export class UserListComponent implements OnInit {
       'gender': 'Male',
       'ip_address': '180.136.59.223',
       'bank_balance': 99.989,
+      'reputation': 1.2,
       'photo': 'https://picsum.photos/80/80/?644'
     },
     {
@@ -43,6 +46,7 @@ export class UserListComponent implements OnInit {
       'gender': 'Female',
       'ip_address': '36.8.49.45',
       'bank_balance': -10.90,
+      'reputation': 2.9,
       'photo': 'https://picsum.photos/80/80/?346'
     },
     {
@@ -54,13 +58,14 @@ export class UserListComponent implements OnInit {
       'gender': 'Male',
       'ip_address': '234.216.233.43',
       'bank_balance': 5499.878,
+      'reputation': 4.3,
       'photo': 'https://picsum.photos/80/80/?785'
     }
   ];
 
   constructor() {
     this.filteredUsers = this.users;
-    this.listFilter = 'dupa';
+    this.listFilter = ''; //brak domyślnego filtrowania na starcie
     this._showPhoto = false;
   }
 
@@ -87,6 +92,10 @@ export class UserListComponent implements OnInit {
   performFilter(filterBy: string): IUser[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.users.filter((user: IUser) => user.first_name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  onRatingClicked(message: string): void {
+    this.eventMessage = 'I\'ve just clicked on stars and have result:' + message;
   }
 
   ngOnInit(): void {

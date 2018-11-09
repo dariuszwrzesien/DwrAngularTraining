@@ -7,5 +7,6 @@ export interface IUser {
   gender: string;
   ip_address: string;
   bank_balance: number;
+  reputation: number;
   photo: string;
 }
