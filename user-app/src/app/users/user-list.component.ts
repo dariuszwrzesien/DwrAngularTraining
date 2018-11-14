@@ -13,6 +13,7 @@ export class UserListComponent implements OnInit {
   eventMessage = '';
   filteredUsers: IUser[];
   users: IUser[] = [];
+  errorMessage: '';
 
   constructor(private userService: UserService) {
     this.listFilter = ''; //brak domyślnego filtrowania na starcie
@@ -49,7 +50,13 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
+    this.userService.getUsers().subscribe(
+      users => {
+        this.users = users;
+        this.filteredUsers = this.users;
+      },
+      error => this.errorMessage = <any>error
+    );
     this.filteredUsers = this.users;
   }
 }
