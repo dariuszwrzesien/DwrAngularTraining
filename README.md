@@ -42,3 +42,7 @@ Deploy
 `ng buld --help`
 
 `ng build --base-href` Ustawienie base URL np. dla produkcji
+
+### Angular Binding
+
+![Angular Binding](angular-binding.png)
