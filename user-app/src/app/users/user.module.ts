@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import {UserListComponent} from "./user-list.component";
-import {UserDetailComponent} from "./user-detail.component";
-import {ConvertToSpacesPipe} from "../shared/pipes/convert-to-spaces.pipe";
-import {RouterModule} from "@angular/router";
-import {UserDetailGuard} from "./user-detail.guard";
-import {SharedModule} from "../shared/shared.module";
+import {UserListComponent} from './user-list.component';
+import {UserDetailComponent} from './user-detail.component';
+import {ConvertToSpacesPipe} from '../shared/pipes/convert-to-spaces.pipe';
+import {SharedModule} from '../shared/shared.module';
+import {UserRoutingModule} from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,10 +13,7 @@ import {SharedModule} from "../shared/shared.module";
   ],
   imports: [
     SharedModule,
-    RouterModule.forChild([
-      { path: 'users', component: UserListComponent },
-      { path: 'users/:id', canActivate: [UserDetailGuard], component: UserDetailComponent }
-    ])
+    UserRoutingModule
   ]
 })
 export class UserModule { }
