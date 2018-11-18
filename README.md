@@ -46,3 +46,13 @@ Deploy
 ### Angular Binding
 
 ![Angular Binding](angular-binding.png)
+
+### Kursy:
+
+##### Pluralsight:
+Angular CLI, Angular Reactive Forms, Angular Routing, Angular Component Communication, Angular Fundamentals, Unit Testing in Angular
+
+
+### Dokumentacja:
+
+Angular.io
