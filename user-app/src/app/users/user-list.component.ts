@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IUser} from './user';
 import {UserService} from './user.service';
+import {Router} from "@angular/router";
 
 @Component({
   templateUrl: './user-list.component.html',
@@ -14,7 +15,8 @@ export class UserListComponent implements OnInit {
   users: IUser[] = [];
   errorMessage: '';
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private router: Router) {
     this.listFilter = ''; //brak domyślnego filtrowania na starcie
     this._showPhoto = false;
   }
@@ -46,6 +48,10 @@ export class UserListComponent implements OnInit {
 
   onRatingClicked(message: string): void {
     this.eventMessage = 'I\'ve just clicked on stars and have result:' + message;
+  }
+
+  onBack(): void {
+    this.router.navigate(['/welcome']);
   }
 
   ngOnInit(): void {

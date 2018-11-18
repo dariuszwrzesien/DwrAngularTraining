@@ -30,8 +30,8 @@
     <tr *ngFor='let user of filteredUsers'>
       <td>{{user.id}}</td>
       <td><img *ngIf='showPhoto' src='{{user.photo}}' title='{{user.first_name}} {{user.last_name}}'></td>
-      <td>{{user.first_name}}</td>
-      <td>{{user.last_name}}</td>
+      <td><a [routerLink]="['/users', user.id]">{{user.first_name}}</a></td>
+      <td><a [routerLink]="['/users', user.id]">{{user.last_name}}</a></td>
       <td><app-star [rating]='user.reputation' (ratingClicked)='onRatingClicked($event)'></app-star></td>
       <td>{{user.email}}</td>
       <td>ikonka</td>
